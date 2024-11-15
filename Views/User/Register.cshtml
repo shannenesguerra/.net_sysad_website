@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+@model NUCCITWebApp.Models.User
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>National University - CCIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/register.css">
+</head>
+
+<h1 class="reg_title">REGISTER</h1>
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Role">Select Role</label>
+        <select id="Role" name="Role" class="form-control" asp-items="ViewBag.Roles"></select>
+    </div>
+    <button type="submit" class="reg_btn">Register</button>
+</form>
+

@@ -1,0 +1,157 @@
+﻿@model IEnumerable<NUCCITWebApp.Models.Comment>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>National University - CCIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/dashboard.css">
+</head>
+
+<h1 class="dashboard_title">DASHBOARD</h1>
+
+<div class="table_main">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Role</th>
+                <th>Comment</th>
+                <th>Date Posted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var comment in Model)
+                {
+                    <tr>
+                        <td>@comment.Id</td>
+                        <td>@comment.Role</td>
+                        <td>@comment.CommentText</td>
+                        <td>@comment.DatePosted?.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a class="btn btn-primary" data-toggle="modal" data-target="#editModal"
+                               data-id="@comment.Id"
+                               data-role="@comment.Role"
+                               data-commenttext="@comment.CommentText"
+                               data-dateposted="@comment.DatePosted?.ToString("yyyy-MM-dd")">Edit</a>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                    data-id="@comment.Id">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No comments available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Edit Comment Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" method="post" asp-action="Edit">
+                    <input type="hidden" name="Id" id="editCommentId" />
+                    <div class="form-group">
+                        <label for="editRole">Role</label>
+                        <input type="text" class="form-control" id="editRole" name="Role" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editCommentText">Comment</label>
+                        <textarea class="form-control" id="editCommentText" name="CommentText"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDatePosted">Date Posted</label>
+                        <input type="date" class="form-control" id="editDatePosted" name="DatePosted" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this comment?</p>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="deleteCommentId" />
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Populate the edit modal with comment data
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var role = button.data('role');
+            var commentText = button.data('commenttext');
+            var datePosted = button.data('dateposted');
+
+            var modal = $(this);
+            modal.find('#editCommentId').val(id);
+            modal.find('#editRole').val(role);
+            modal.find('#editCommentText').val(commentText);
+            modal.find('#editDatePosted').val(datePosted);
+        });
+
+        // Populate the delete modal with the comment ID
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#deleteCommentId').val(id);
+        });
+
+        // Handle the confirmation of delete
+        $('#confirmDelete').on('click', function () {
+            var id = $('#deleteCommentId').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "Admin")', // Adjust the action name if needed
+                data: { id: id },
+                success: function () {
+                    location.reload(); // Reload the page to reflect changes
+                },
+                error: function () {
+                    alert('An error occurred while deleting the comment. Please try again.');
+                }
+            });
+        });
+    </script>
+}

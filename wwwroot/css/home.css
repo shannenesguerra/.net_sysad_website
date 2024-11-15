@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* colors */
+    --first-color: #0C356A;
+    --second-color: #FFC436;
+    --third-color: #0174BE;
+    --fourth-color: #FFF0CE;
+    --black-color: #1E1E1E;
+    --white-color: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-image: url('/home.svg');
+    background-size: cover; /* changed to cover for better responsiveness */
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 40px 100px;
+}
+
+.navbar-collapse {
+    padding: 0px 100px;
+}
+
+.navbar .active {
+    color: var(--second-color);
+    font-weight: bold;
+}
+
+.navbar_left, .navbar_right {
+    display: flex;
+    gap: 20px;
+}
+
+.user_title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white-color);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.navbar .line {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--second-color);
+    transition: 0.5s;
+}
+
+.overlay {
+    margin-top: 35%;
+    margin-bottom: 35%;
+    width: 100%;
+    height: 400px;
+}
+
+.title_container {
+    position: relative;
+    text-align: center;
+    color: var(--white-color);
+}
+
+    .title_container h1 {
+        margin-top: 5%;
+        font-size: 40px;
+        margin-bottom: 10px;
+        font-weight: 650;
+    }
+
+    .title_container h2 {
+        font-size: 24px;
+        color: var(--second-color);
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .title_container h3 {
+        color: var(--fourth-color);
+        font-size: 55px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+/* Section 1 */
+.section_1 {
+    padding: 50px 30px;
+    width: 65%;
+    margin: auto;
+    text-align: left;
+}
+
+    .section_1 h4 {
+        font-size: 48px;
+        color: var(--white-color);
+        margin-bottom: 15px;
+    }
+
+        .section_1 h4 strong {
+            color: var(--second-color);
+        }
+
+    .section_1 p {
+        font-size: 20px;
+        color: var(--fourth-color);
+        line-height: 2;
+    }
+
+/* Section 2 */
+.section_2 {
+    margin-top: 40%;
+    margin-bottom: 55%;
+    color: white;
+    text-align: left;
+}
+
+    .section_2 h4 {
+        font-size: 24px;
+        margin-left: 20%;
+        margin-bottom: 30px;
+        color: var(--fourth-color);
+    }
+
+.prog_card {
+    width: 500px;
+    height: 600px;
+    padding-top: 10%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.img_placeholder {
+    width: 400px;
+    height: 300px;
+    background-color: #CDCDCD;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+.prog_title {
+    font-size: 20px;
+}
+
+.prog_btn {
+    border: none;
+    background-color: var(--third-color);
+    padding: 15px 20px;
+}
+
+.prog_btn {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+    .prog_btn:hover {
+        background-color: var(--second-color);
+    }
+
+/* Section 3 */
+.section_3 {
+    margin-bottom: 50%;
+}
+
+    .section_3 h1 {
+        margin-bottom: 10%;
+        font-size: 64px;
+        font-weight: 800;
+    }
+
+.comment_card {
+    border: none;
+    background-color: var(--fourth-color);
+}
+
+.comment_card h5 {
+    font-size: 18px;
+    color: var(--first-color);
+}
+
+.comment_card p {
+    font-size: 20px;
+}
+
+/* Footer */
+footer {
+    color: var(--white-color);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer_container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer_links {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .footer_links li {
+        display: inline;
+        margin: 0 30px;
+    }
+
+        .footer_links li a {
+            font-weight: 600;
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+    .footer_links a:hover {
+        text-decoration: underline;
+    }
+
+.footer_content {
+    margin-top: 20px;
+}
+
+.footer_logo {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    max-width: 100px;
+    height: auto;
+}
+
+.footer_title {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+.footer_content p {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1920px) {
+    .navbar {
+        padding: 20px 50px;
+    }
+
+    .section_1 {
+        width: 80%;
+    }
+
+    .title_container h1 {
+        margin-top: -4%;
+    }
+
+    .prog_card {
+        width: 80%;
+        height: auto; /* Adjust height for better fit */
+    }
+
+    .section_2 h4 {
+        margin-left: 10%;
+    }
+
+    .section_3 h1 {
+        font-size: 48px;
+    }
+
+    .footer_links li {
+        margin: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .navbar_left, .navbar_right {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .title_container h1 {
+        font-size: 32px;
+    }
+
+    .title_container h2 {
+        font-size: 18px;
+    }
+
+    .title_container h3 {
+        font-size: 40px;
+    }
+
+    .section_1, .section_2 {
+        padding: 20px;
+        width: 90%;
+    }
+
+        .section_1 h4 {
+            font-size: 36px;
+        }
+
+        .section_1 p {
+            font-size: 16px;
+        }
+
+    .prog_card {
+        width: 90%;
+        height: auto;
+    }
+
+    .prog_title {
+        font-size: 18px;
+    }
+
+    .footer_links li {
+        display: block; /* Stack footer links on small screens */
+        margin: 5px 0;
+    }
+
+    .footer_title {
+        font-size: 1.2em;
+    }
+
+    .footer_content p {
+        font-size: 14px;
+    }
+}

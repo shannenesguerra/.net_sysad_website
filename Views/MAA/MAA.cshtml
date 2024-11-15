@@ -1,0 +1,176 @@
+﻿@model IEnumerable<NUCCITWebApp.Models.Comment>
+
+@{
+    ViewData["Title"] = "MAA";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - National University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/maa.css">
+</head>
+
+<body>
+    <!-- Section 1 -->
+    <section class="section_1">
+        <div class="bsit_info">
+            <h1>Bachelor of Science in <br>Information Technology</h1>
+            <p>The BS Information Technology (BSIT) program includes the study of the utilization of both hardware and
+                software technologies involving planning, installing, customizing, operating, managing and administering, and
+                maintaining information technology infrastructure that provides computing solutions to address the needs of an
+                organization.</p>
+            <p>The program prepares graduates to address various user needs involving the selection, development,
+                application, integration, and management of computing technologies within an organization.</p>
+            <p><strong>Program description is lifted from the CHED Memorandum Order No. 25 s.2015</strong></p>
+        </div>
+
+        <div class="maa_info">
+            <h1>Multimedia Arts and Animation<br>Specialization</h1>
+            <p>The Multimedia Arts and Animation (MAA) specialization develops students to create software solutions
+                using varieties of multimedia, creating a balance between creative technologies and information technology.</p>
+            <p>Graduates of the specialization shall be able to implement the processes, strategies, and protocols
+                required to produce and create multimedia solutions using critical thinking skills to solve industry
+                related problems through real-world projects.</p>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section_2">
+        <div class="text_content">
+            <h2>Program Education Objectives</h2>
+            <h3>After 3 to 5 years on the job, BS Information Technology graduates of National University are expected to:</h3>
+            <ul>
+                <li>Have professional careers in industry or academe or be engaged in advanced studies.</li>
+                <li>Continue to seek knowledge to thrive in an increasingly globalized society.</li>
+                <li>Be successful team members or team leaders.</li>
+                <li>Conduct themselves with integrity and incorporate proper ethical considerations in development and
+                    administration of computing-based systems that contribute to nation building.</li>
+            </ul>
+
+            <h3>Student Outcomes:</h3>
+            <ul>
+                <li>Analyze a complex computing problem and apply principles of computing and other relevant disciplines
+                    to identify solutions.</li>
+                <li>Design, implement, and evaluate a computing-based solution to meet a given set of computing
+                    requirements in the context of the program’s discipline.</li>
+                <li>Communicate effectively in a variety of professional contexts.</li>
+                <li>Recognize professional responsibilities and make informed judgments in computing practice based on
+                    legal and ethical principles.</li>
+                <li>Function effectively as a member or leader of a team engaged in activities appropriate to the
+                    program’s discipline.</li>
+                <li>Identify and analyze user needs and consider them in the selection, creation, integration,
+                    evaluation, and administration of computing-based systems.</li>
+            </ul>
+        </div>
+        <div class="image_content">
+            <img class="img_placeholder" src="~/img/pic3.jfif" alt="maa" />
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section_3">
+        <h1>Career Opportunities</h1>
+        <h3>BSIT graduates may have the following job roles:</h3>
+        <div class="career_row row row-cols-1 row-cols-md-3 g-4">
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic2.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Web and Applications Developer</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic5.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Junior Database Administrator</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic6.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Systems Administrator</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Multimedia Arts and Animation:</h3>
+        <div class="career_row row row-cols-1 row-cols-md-3 g-4">
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic4.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Graphic Artist/Designer</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic1.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Multimedia Specialist/Designer</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="career_card col">
+                <div class="card h-100">
+                    <img src="~/img/pic11.jfif" class="career_img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">2D and 3D Multimedia Artist</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="section_4">
+        <h1>Leave a Comment</h1>
+        <div class="container">
+            <form id="addCommentForm" method="post" asp-action="AddCommentMaa" asp-controller="Admin">
+                <div class="form-group">
+                    <label for="commentText"></label>
+                    <textarea class="form-control" id="commentText" name="CommentText" required></textarea>
+                </div>
+                <input type="hidden" name="DatePosted" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <button type="submit" class="send_button">Add Comment</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    @section Scripts {
+        <script>
+            // Optional: Handle form submission via AJAX
+            $('#addCommentForm').on('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+                var form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serialize(), // Serialize form data
+                    success: function (response) {
+                        // Handle success (e.g., show a success message or clear the form)
+                        alert('Comment added successfully!');
+                        form[0].reset(); // Clear the form
+                    },
+                    error: function () {
+                        // Handle error
+                        alert('An error occurred while adding the comment. Please try again.');
+                    }
+                });
+            });
+        </script>
+    }
+</body>
+</html>
